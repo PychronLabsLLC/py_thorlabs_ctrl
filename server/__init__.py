@@ -15,34 +15,4 @@
 # ===============================================================================
 
 
-
-from flask import Flask
-
-app = Flask(__name__)
-
-
-import py_thorlabs_ctrl.kinesis
-py_thorlabs_ctrl.kinesis.init(r'C:\Program Files\Thorlabs\Kinesis')
-# change this to your own installation path
-from py_thorlabs_ctrl.kinesis.motor import Motor
-# tcube = TCubeDCServo(83854669)
-# tcube.create()
-# tcube.enable()
-# tcube.is_homed()
-# tcube.get_position()
-
-xmotor = Motor(83854669)
-xmotor.create()
-xmotor.enable()
-xmotor.is_homed()
-
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
-
-@app.route('/position/<axis>')
-def get_position(axis):
-
-    resp = {axis: {'position': xmotor.get_position()}}
-    return resp
 # ============= EOF =============================================
