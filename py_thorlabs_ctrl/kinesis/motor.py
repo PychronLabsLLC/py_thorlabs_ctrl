@@ -112,6 +112,7 @@ class Motor:
 
         device.Disconnect()
 
+
 class KCubeMotor(Motor):
 
     """
